@@ -1,66 +1,47 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import { fetchSciFi } from './Services/apiService';
-import { Flick } from './Models/Flick';
+import Flick from './Interfaces/Flick';
+
+import FlickList from './Components/FlickList/FlickList';
+import FlickDetail from './Components/FlickDetail/FlickDetail';
 
 import './App.css';
 
-function App() {
-	const [report, setReport] = useState([]);
+const App: React.FC = () => {
+	const [report, setReport] = useState<Flick[]>([]);
 
 	useEffect(() => {
 		const getFlicks = async () => {
-			try {
-				const response = await fetchSciFi();
-				const responseFlicks = response.results.map(
-					(item: any) =>
-						new Flick(
-							item.id,
-							item.title,
-							item.release_date,
-							item.popularity,
-							item.poster_path
-						)
-				);
-				setReport(responseFlicks);
-			} catch (error) {
-				console.error('Could not load users', error);
-			}
+			// fetch and transform logic goes into apiService
+			const results = await fetchSciFi();
+			setReport(results);
 		};
-
 		getFlicks();
 		// note: this empty dependency array means this effect runs only once on mount
 	}, []);
 
+	// get that app header out of my detail view
 	return (
 		<div className='App'>
 			<header className='App-header'>
 				<p>Minority Retort.</p>
-				<div>
-					{report.map((flick: Flick) => (
-						<div
-							key={flick.id}
-							className='flick-cell-div'>
-							<div className='flick-pic-div'>
-								<img
-									src={`https://image.tmdb.org/t/p/w200${flick.imageUrl}`}
-									alt={flick.title}
-									className='flick-pic'
-								/>
-							</div>
-							<div className='flick-deets-div'>
-								<h2>{flick.title}</h2>
-								{/* <p>
-									Released:{' '}
-									{flick.releaseDate.toLocaleString()}
-								</p> */}
-								<p>Popularity: {flick.popularity}</p>
-							</div>
-						</div>
-					))}
-				</div>
+				<BrowserRouter>
+					<Routes>
+						<Route
+							path='/'
+							element={<FlickList report={report} />}
+						/>
+						<Route
+							path='/film/:flickId'
+							element={<FlickDetail />}
+						/>
+					</Routes>
+				</BrowserRouter>
 			</header>
 		</div>
 	);
-}
+};
 
 export default App;

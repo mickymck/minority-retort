@@ -28,4 +28,4 @@ class Flick {
 	}
 }
 
-export { Flick };
+export default Flick;

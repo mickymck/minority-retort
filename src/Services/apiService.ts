@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Flick from '../Interfaces/Flick';
 
 // instantiate the api client
 const apiClient = axios.create({
@@ -21,7 +22,16 @@ export const fetchSciFi = async () => {
 		const response = await apiClient.get('/3/discover/movie', {
 			params: params,
 		});
-		return response.data;
+		return response.data.results.map(
+			(item: any) =>
+				new Flick(
+					item.id,
+					item.title,
+					item.release_date,
+					item.popularity,
+					item.poster_path
+				)
+		);
 	} catch (error) {
 		// handle this error eventually, but for now console log it and throw
 		console.error('There was an error fetching the data:', error);

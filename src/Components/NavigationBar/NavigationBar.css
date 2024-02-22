@@ -1,0 +1,21 @@
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100vw;
+}
+
+.navbar-back {
+	font-size: 20px;
+	color: #007aff;
+	cursor: pointer;
+}
+
+.navbar-title {
+	font-size: 24px;
+	font-weight: medium;
+	color: #fff;
+	margin: 0;
+	flex-grow: 1;
+	text-align: center;
+}
