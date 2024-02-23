@@ -2,20 +2,42 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 100vw;
+	width: 96vw;
+	padding: 2vh 2vw;
 }
 
 .navbar-back {
 	font-size: 20px;
+	font-weight: medium;
 	color: #007aff;
 	cursor: pointer;
+	background: none;
+	border: none;
 }
 
 .navbar-title {
 	font-size: 24px;
 	font-weight: medium;
-	color: #fff;
+	color: #6b2f09;
 	margin: 0;
 	flex-grow: 1;
 	text-align: center;
+}
+
+.back-div {
+	display: flex;
+	flex-direction: row;
+	align-items: left;
+	width: 20vw;
+}
+
+.title-div {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.empty-div {
+	width: 20vw;
 }

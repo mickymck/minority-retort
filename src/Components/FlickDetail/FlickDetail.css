@@ -1,0 +1,6 @@
+.container-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	color: #161489;
+}

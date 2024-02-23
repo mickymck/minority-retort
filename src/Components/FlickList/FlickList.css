@@ -1,9 +1,14 @@
+.link-div {
+	color: #623110;
+	text-decoration: none;
+}
+
 .flick-cell-div {
 	display: flex;
 	flex-direction: row;
 	justify-content: flex-start;
-	border: #61dafb 1px solid;
 	margin: 1vh 5vw;
+	background-color: #ffdbbd;
 }
 
 .flick-pic-div {

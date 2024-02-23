@@ -6,6 +6,7 @@ interface Flick {
 	imageUrl: string;
 }
 
+// not sure if I need this Model class or not. for now, I've got it.
 class Flick {
 	id: number;
 	title: string;

@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { fetchSciFi } from './Services/apiService';
-import Flick from './Interfaces/Flick';
+import { ReportProvider } from './Services/ReportProvider';
 
 import FlickList from './Components/FlickList/FlickList';
 import FlickDetail from './Components/FlickDetail/FlickDetail';
@@ -10,37 +8,25 @@ import FlickDetail from './Components/FlickDetail/FlickDetail';
 import './App.css';
 
 const App: React.FC = () => {
-	const [report, setReport] = useState<Flick[]>([]);
-
-	useEffect(() => {
-		const getFlicks = async () => {
-			// fetch and transform logic goes into apiService
-			const results = await fetchSciFi();
-			setReport(results);
-		};
-		getFlicks();
-		// note: this empty dependency array means this effect runs only once on mount
-	}, []);
-
-	// get that app header out of my detail view
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<p>Minority Retort.</p>
+		// ReportProvider to pass global context to children via useReport
+		<ReportProvider>
+			<div className='App'>
 				<BrowserRouter>
 					<Routes>
 						<Route
 							path='/'
-							element={<FlickList report={report} />}
+							element={<FlickList />}
 						/>
 						<Route
-							path='/film/:flickId'
+							// :id is a route param, used in Detail to find the flick
+							path='/film/:id'
 							element={<FlickDetail />}
 						/>
 					</Routes>
 				</BrowserRouter>
-			</header>
-		</div>
+			</div>
+		</ReportProvider>
 	);
 };
 
