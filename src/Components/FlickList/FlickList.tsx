@@ -10,7 +10,6 @@ const FlickList: React.FC = () => {
 	return (
 		<div>
 			{report.map((flick) => (
-				// will eventually move this out into a ListItem
 				// need to find a better way to style this. remove text styling for sure...
 				<Link
 					key={flick.id}
