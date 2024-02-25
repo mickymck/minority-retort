@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-import { Genre } from '../Interfaces/Genre';
+import { Genre } from '../interfaces/Genre';
 
-import Flick from '../Interfaces/Flick';
+import Flick from '../interfaces/Flick';
 
 interface ReportContextType {
 	report: Flick[];

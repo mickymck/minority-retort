@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
-import { useReport } from '../../Services/ReportProvider';
+import { useReport } from '../../services/ReportProvider';
 
 import NavigationBar from '../NavigationBar/NavigationBar';
-import Flick from '../../Interfaces/Flick';
+import Flick from '../../interfaces/Flick';
 
 import './FlickDetail.css';
 

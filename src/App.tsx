@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { ReportProvider } from './Services/ReportProvider';
+import { ReportProvider } from './services/ReportProvider';
 
-import FlickList from './Components/FlickList/FlickList';
-import FlickDetail from './Components/FlickDetail/FlickDetail';
+import FlickList from './components/FlickList/FlickList';
+import FlickDetail from './components/FlickDetail/FlickDetail';
 
 import './App.css';
 

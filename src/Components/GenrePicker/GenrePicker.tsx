@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { useReport } from '../../Services/ReportProvider';
-import { fetchGenre } from '../../Services/apiService';
-import { Genre, GenreDetails } from '../../Interfaces/Genre';
+import { useReport } from '../../services/ReportProvider';
+import { fetchGenre } from '../../services/ApiService';
+import { Genre, GenreDetails } from '../../interfaces/Genre';
 
 import './GenrePicker.css';
 
