@@ -4,7 +4,6 @@ import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import App from './App';
 import MockReport from './__mocks__/MockReport';
-import Flick from './Interfaces/Flick';
 
 jest.mock('./Components/FlickList/FlickList', () => () => (
 	<div>FlickList Mock</div>
@@ -12,15 +11,7 @@ jest.mock('./Components/FlickList/FlickList', () => () => (
 
 jest.mock('./Services/ReportProvider', () => ({
 	useReport: jest.fn().mockReturnValue({
-		report: [
-			new Flick(
-				1241534,
-				'Shin Spider-Man',
-				'2024-02-04',
-				2.611,
-				'/h2ncfhfr3bwdtZ2CVtC1ky18owL.jpg'
-			),
-		],
+		report: MockReport,
 	}),
 }));
 
@@ -37,13 +28,13 @@ describe('App component', () => {
 
 	test('renders FlickDetail component for a film route', () => {
 		console.log('@@@ ', MockReport);
-		const id = MockReport.report[0].id;
+		const id = 1241534;
 		render(
 			<MemoryRouter initialEntries={[`/film/${id}`]}>
 				<App />
 			</MemoryRouter>
 		);
-		const flickDetailElement = screen.getByText(MockReport.report[0].title);
+		const flickDetailElement = screen.getByText('Shin Spider-Man');
 		expect(flickDetailElement).toBeInTheDocument();
 	});
 });

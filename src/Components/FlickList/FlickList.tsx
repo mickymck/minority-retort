@@ -8,16 +8,14 @@ import './FlickList.css';
 const FlickList: React.FC = () => {
 	const { report } = useReport();
 	return (
-		<div>
+		<div className='flicklist-container'>
 			{report.map((flick) => (
 				// need to find a better way to style this. remove text styling for sure...
 				<Link
 					key={flick.id}
 					to={`/film/${flick.id}`}
 					className='link-div'>
-					<div key={flick.id}>
-						<FlickCell flick={flick} />
-					</div>
+					<FlickCell flick={flick} />
 				</Link>
 			))}
 		</div>

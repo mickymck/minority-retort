@@ -14,10 +14,9 @@ const FlickDetail: React.FC<{}> = ({}) => {
 
 	// turn flickId into a number
 
-	const flick = report.find(
-		(flick) => flick.id === parseInt(id || '0')
-	) as // getting a little more explicit here, for extra type safety (overkill?)
-	Flick | undefined;
+	const flick = report.find((flick) => flick.id === parseInt(id || '0')) as  // getting a little more explicit here, for extra type safety (overkill?)
+		| Flick
+		| undefined;
 
 	return (
 		<div className='container-div'>
