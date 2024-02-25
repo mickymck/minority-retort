@@ -32,7 +32,7 @@ describe('App component', () => {
 			);
 		});
 		await waitFor(() => {
-			expect(screen.getByText(/Madame Web/i)).toBeInTheDocument();
+			expect(screen.getByText(/Shin Spider-Man/i)).toBeInTheDocument();
 		});
 	});
 });

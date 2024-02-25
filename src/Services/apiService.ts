@@ -25,6 +25,10 @@ export const fetchGenre = async (genreId: number) => {
 		const response = await apiClient.get('/3/discover/movie', {
 			params: params(genreId),
 		});
+		console.log(
+			'fetchGenre called.  count: ',
+			response.data.results.length
+		);
 		return response.data.results.map((item: any) => ({
 			id: item.id,
 			title: item.title,
