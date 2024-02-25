@@ -25,16 +25,13 @@ export const fetchSciFi = async () => {
 		const response = await apiClient.get('/3/discover/movie', {
 			params: params,
 		});
-		return response.data.results.map(
-			(item: any) =>
-				new Flick(
-					item.id,
-					item.title,
-					item.release_date,
-					item.popularity,
-					item.poster_path
-				)
-		);
+		return response.data.results.map((item: any) => ({
+			id: item.id,
+			title: item.title,
+			releaseDate: item.release_date,
+			popularity: item.popularity,
+			imageUrl: item.poster_path,
+		}));
 	} catch (error) {
 		// handle this error eventually, but for now console log it and throw
 		console.error('There was an error fetching the data:', error);

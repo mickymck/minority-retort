@@ -1,6 +1,7 @@
 .App {
 	text-align: center;
 	font-family: Roboto, Helvetica, sans-serif;
+	padding: 1vh 2vw;
 }
 
 .App-body {

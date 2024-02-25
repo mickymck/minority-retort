@@ -1,4 +1,6 @@
+import React, { useRef } from 'react';
 import Flick from '../../Interfaces/Flick';
+import { useDynamicTitleSize } from '../../Hooks/DynamicTitleSize';
 
 import './FlickCell.css';
 
@@ -7,6 +9,9 @@ interface FlickCellProps {
 }
 
 const FlickCell: React.FC<FlickCellProps> = ({ flick }) => {
+	const titleRef = useRef<HTMLHeadingElement>(null);
+	const fontSize = useDynamicTitleSize(titleRef, 24);
+
 	return (
 		<div
 			key={flick.id}
@@ -19,19 +24,15 @@ const FlickCell: React.FC<FlickCellProps> = ({ flick }) => {
 				/>
 			</div>
 			<div className='flick-deets-div'>
-				<h2>{flick.title}</h2>
-				{
-					// get rid of this timestamp!
-					<p>released: {flick.releaseDate.toLocaleString()}</p>
-				}
-				<p>
-					Popularity:{' '}
-					{
-						// get rid of this eventually, since what even is popularity?
-						// waiting until I can find something better to replace it with
-						flick.popularity
-					}
-				</p>
+				<div className='title-container'>
+					<p
+						ref={titleRef}
+						className='responsive-title'
+						style={{ fontSize: `${fontSize}px` }}>
+						{flick.title}
+					</p>
+				</div>
+				<p className='release-text'>released: {flick.releaseDate}</p>
 			</div>
 		</div>
 	);
