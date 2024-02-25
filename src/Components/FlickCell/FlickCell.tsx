@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import { useDynamicTitleSize } from '../../Hooks/DynamicTitleSize';
-import { useReport } from '../../Services/ReportProvider';
-import { GenreDetails } from '../../Interfaces/Genre';
-import Flick from '../../Interfaces/Flick';
+import { useDynamicTitleSize } from '../../hooks/DynamicTitleSize';
+import { useReport } from '../../services/ReportProvider';
+import { GenreDetails } from '../../interfaces/Genre';
+import Flick from '../../interfaces/Flick';
 
 import './FlickCell.css';
 

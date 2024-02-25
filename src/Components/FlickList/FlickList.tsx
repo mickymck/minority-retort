@@ -1,4 +1,4 @@
-import { useReport } from '../../Services/ReportProvider';
+import { useReport } from '../../services/ReportProvider';
 import { Link } from 'react-router-dom';
 
 import GenrePicker from '../GenrePicker/GenrePicker';
