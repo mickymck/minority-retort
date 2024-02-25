@@ -1,18 +1,14 @@
-import React, {
-	createContext,
-	useContext,
-	useState,
-	ReactNode,
-	useEffect,
-} from 'react';
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-import { fetchGenre } from './apiService';
+import { Genre } from '../Interfaces/Genre';
 
 import Flick from '../Interfaces/Flick';
 
 interface ReportContextType {
 	report: Flick[];
 	setReport: (newReport: Flick[]) => void;
+	selectedGenre: Genre;
+	setSelectedGenre: (newGenre: Genre) => void;
 }
 
 // new Context object of type ReportContextType or undefined (undefined as a way to
@@ -24,8 +20,9 @@ export const ReportProvider: React.FC<{ children: ReactNode }> = ({
 	children,
 }) => {
 	const [report, setReport] = useState<Flick[]>([]);
+	const [selectedGenre, setSelectedGenre] = useState<Genre>(Genre.SciFi);
 
-	const value = { report, setReport };
+	const value = { report, setReport, selectedGenre, setSelectedGenre };
 
 	return (
 		<ReportContext.Provider value={value}>
