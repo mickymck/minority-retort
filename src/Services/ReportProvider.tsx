@@ -6,12 +6,13 @@ import React, {
 	useEffect,
 } from 'react';
 
-import { fetchSciFi } from './apiService';
+import { fetchGenre } from './apiService';
 
 import Flick from '../Interfaces/Flick';
 
 interface ReportContextType {
 	report: Flick[];
+	setReport: (newReport: Flick[]) => void;
 }
 
 // new Context object of type ReportContextType or undefined (undefined as a way to
@@ -24,18 +25,7 @@ export const ReportProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
 	const [report, setReport] = useState<Flick[]>([]);
 
-	// useEffect to fetch scifi flicks on component mount
-	useEffect(() => {
-		const getFlicks = async () => {
-			// fires twice due to StrictMode for development
-			console.log('~~~~~ReportProvider --> getFlicks()');
-			const results = await fetchSciFi();
-			setReport(results);
-		};
-		getFlicks();
-	}, []);
-
-	const value = { report };
+	const value = { report, setReport };
 
 	return (
 		<ReportContext.Provider value={value}>
