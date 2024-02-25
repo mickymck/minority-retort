@@ -1,3 +1,14 @@
+import action from '../assets/images/action.png';
+import comedy from '../assets/images/comedy.png';
+import documentary from '../assets/images/documentary.png';
+import drama from '../assets/images/drama.png';
+import family from '../assets/images/family.png';
+import fantasy from '../assets/images/fantasy.png';
+import horror from '../assets/images/horror.png';
+import romance from '../assets/images/romance.png';
+import scifi from '../assets/images/scifi.png';
+import western from '../assets/images/western.png';
+
 export enum Genre {
 	Action,
 	Comedy,
@@ -11,7 +22,7 @@ export enum Genre {
 	Western,
 }
 
-export class GenreId {
+export class GenreDetails {
 	static getId(genre: Genre): number {
 		switch (genre) {
 			case Genre.Action:
@@ -38,4 +49,33 @@ export class GenreId {
 				return 878;
 		}
 	}
+
+	static getImage(genre: Genre): string {
+		switch (genre) {
+			case Genre.Action:
+				return action;
+			case Genre.Comedy:
+				return comedy;
+			case Genre.Documentary:
+				return documentary;
+			case Genre.Drama:
+				return drama;
+			case Genre.Family:
+				return family;
+			case Genre.Fantasy:
+				return fantasy;
+			case Genre.Horror:
+				return horror;
+			case Genre.Romance:
+				return romance;
+			case Genre.SciFi:
+				return scifi;
+			case Genre.Western:
+				return western;
+			default:
+				return scifi;
+		}
+	}
 }
+
+export class GenreId {}

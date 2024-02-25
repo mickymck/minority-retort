@@ -13,6 +13,30 @@
 	max-height: 12vh;
 }
 
+.page-number-div {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 auto;
+	max-width: 100px;
+}
+
+.page-number-div p {
+	font-size: 20px;
+	font-weight: medium;
+}
+
+.page-number-div button {
+	background-color: none;
+	border: none;
+	font-size: 30px;
+	font-weight: medium;
+	color: #007aff;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+
 @media (max-width: 600px) {
 	.flicklist-container {
 		grid-template-columns: 1fr;

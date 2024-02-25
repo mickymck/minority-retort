@@ -1,0 +1,9 @@
+.picker {
+	margin-bottom: 20px;
+	width: 150px;
+	height: 30px;
+	overflow: hidden;
+	border-radius: 5px;
+	text-align: center;
+	font-size: medium;
+}

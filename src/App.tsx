@@ -4,7 +4,6 @@ import { ReportProvider } from './Services/ReportProvider';
 
 import FlickList from './Components/FlickList/FlickList';
 import FlickDetail from './Components/FlickDetail/FlickDetail';
-import GenrePicker from './Components/GenrePicker/GenrePicker';
 
 import './App.css';
 
@@ -13,7 +12,7 @@ const App: React.FC = () => {
 		// ReportProvider to pass global context to children via useReport
 		<ReportProvider>
 			<div className='App'>
-				<GenrePicker />
+				<h1 className='app-header'>Minority Retort.</h1>
 				<Routes>
 					<Route
 						path='/'
