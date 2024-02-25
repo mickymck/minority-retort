@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 function useDynamicTitleSize(
 	ref: React.RefObject<HTMLElement>,
@@ -7,27 +7,35 @@ function useDynamicTitleSize(
 	const [fontSize, setFontSize] = useState(defaultFont);
 
 	useEffect(() => {
+		// guard against ref.current being nil
+		if (!ref.current) return;
+		let currentFont = defaultFont;
 		const adjustFontSize = () => {
-			if (ref.current) {
-				const parentWidth = ref.current.parentElement?.offsetWidth ?? 0;
-				console.log('containerWidth: ', parentWidth);
-				const textWidth = ref.current.scrollWidth;
-				console.log('textWidth: ', textWidth);
-				if (textWidth > parentWidth && parentWidth > 0) {
-					const scaleFactor = parentWidth / textWidth;
-					setFontSize(defaultFont * scaleFactor);
-				} else {
-					setFontSize(defaultFont);
-				}
+			// guard against ref.current being nil
+			if (!ref.current) return;
+			ref.current.style.fontSize = `${currentFont}px`;
+			// for vertical spacing (flex-grow in css) I need to look at the parent's height
+			const titleHeight = ref.current.parentElement?.scrollHeight ?? 0;
+			// this is maybe hacky, but this gets release height based on current structure
+			const releaseHeight =
+				ref.current.parentElement?.parentElement?.children[1]
+					.scrollHeight ?? 0;
+			// total height I have to work with
+			const containerHeight =
+				ref.current.parentElement?.parentElement?.offsetHeight ?? 0;
+			// giving a 10% buffer for padding
+			if ((titleHeight + releaseHeight) * 1.1 > containerHeight) {
+				// decrement the font then check again
+				currentFont -= 1;
+				console.log('current font: ', currentFont);
+				requestAnimationFrame(adjustFontSize);
+			} else {
+				setFontSize(currentFont);
 			}
+			requestAnimationFrame(adjustFontSize);
 		};
-		window.addEventListener('resize', adjustFontSize);
 		adjustFontSize();
-		return () => {
-			window.removeEventListener('resize', adjustFontSize);
-		};
-	}, [ref, defaultFont]);
-	console.log('fontSize: ', fontSize);
+	}, [ref]);
 	return fontSize;
 }
 
