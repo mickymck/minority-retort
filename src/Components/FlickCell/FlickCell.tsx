@@ -18,13 +18,13 @@ const FlickCell: React.FC<FlickCellProps> = ({ flick }) => {
 	return (
 		<div
 			key={flick.id}
-			className='flick-cell-div'>
-			<div className='flick-pic-div'>
+			id='cell-container'>
+			<div id='cell-poster-div'>
 				<img
 					key={selectedGenre}
 					src={`https://image.tmdb.org/t/p/w200${flick.imageUrl}`}
 					alt={flick.title}
-					className='flick-pic'
+					id='cell-poster'
 					onError={(e) => {
 						// Fallback to genreImage if flick image fails to load
 						e.currentTarget.src =
@@ -32,8 +32,8 @@ const FlickCell: React.FC<FlickCellProps> = ({ flick }) => {
 					}}
 				/>
 			</div>
-			<div className='flick-deets-div'>
-				<div className='title-container'>
+			<div id='cell-deets-div'>
+				<div id='cell-title-container'>
 					<p
 						ref={titleRef}
 						className='responsive-title'
@@ -41,7 +41,7 @@ const FlickCell: React.FC<FlickCellProps> = ({ flick }) => {
 						{flick.title}
 					</p>
 				</div>
-				<p className='release-text'>released: {flick.releaseDate}</p>
+				<p id='cell-sub-text'>released: {flick.releaseDate}</p>
 			</div>
 		</div>
 	);

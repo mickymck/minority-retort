@@ -35,6 +35,7 @@ export const fetchGenre = async (genreId: number) => {
 			releaseDate: item.release_date,
 			popularity: item.popularity,
 			imageUrl: item.poster_path,
+			overview: item.overview,
 		}));
 	} catch (error) {
 		// handle this error eventually, but for now console log it and throw

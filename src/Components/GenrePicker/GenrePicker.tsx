@@ -28,7 +28,7 @@ const GenrePicker: React.FC = () => {
 	return (
 		<div>
 			<select
-				className='picker'
+				id='genre-picker'
 				value={selectedGenre}
 				onChange={(e) => setSelectedGenre(parseInt(e.target.value))}>
 				{Object.entries(Genre)
