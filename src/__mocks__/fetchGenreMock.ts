@@ -1,4 +1,4 @@
-export const fetchGenreMock = {
+export const fetchScifiMock = {
 	results: [
 		{
 			adult: false,
@@ -47,6 +47,45 @@ export const fetchGenreMock = {
 			poster_path: '/h2ncfhfr3bwdtZ2CVtC1ky18owL.jpg',
 			release_date: '2024-02-04',
 			title: 'Shin Spider-Man',
+			video: false,
+			vote_average: 0.0,
+			vote_count: 0,
+		},
+	],
+};
+
+export const fetchComedyMock = {
+	results: [
+		{
+			adult: false,
+			backdrop_path: '/dBWrP16Stl5VrNEdeowOQmed3B0.jpg',
+			genre_ids: [10770, 35, 18],
+			id: 1221680,
+			original_language: 'en',
+			original_title: 'Sense & Sensibility',
+			overview:
+				"A period adaptation of Jane Austen's Sense and Sensibility. After a change in circumstances, Marianne is torn between two men, while Elinor longs for a man beyond reach.",
+			popularity: 31.717,
+			poster_path: '/9pGmTVv1S0WQkFeaFaDZKU0zyr8.jpg',
+			release_date: '2024-02-24',
+			title: 'Sense & Sensibility',
+			video: false,
+			vote_average: 0.0,
+			vote_count: 0,
+		},
+		{
+			adult: false,
+			backdrop_path: null,
+			genre_ids: [35, 18],
+			id: 1240962,
+			original_language: 'en',
+			original_title: 'A Fantastic Relationship',
+			overview:
+				'After a nasty break up, Brian and Katie have to pretend they’re still in a relationship in order to impress a family member at a dinner party.',
+			popularity: 23.831,
+			poster_path: null,
+			release_date: '2024-02-25',
+			title: 'A Fantastic Relationship',
 			video: false,
 			vote_average: 0.0,
 			vote_count: 0,
