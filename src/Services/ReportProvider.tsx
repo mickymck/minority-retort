@@ -9,6 +9,8 @@ interface ReportContextType {
 	setReport: (newReport: Flick[]) => void;
 	selectedGenre: Genre;
 	setSelectedGenre: (newGenre: Genre) => void;
+	selectedFlick: Flick;
+	setSelectedFlick: (newFlick: Flick) => void;
 }
 
 // new Context object of type ReportContextType or undefined (undefined as a way to
@@ -21,8 +23,16 @@ export const ReportProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
 	const [report, setReport] = useState<Flick[]>([]);
 	const [selectedGenre, setSelectedGenre] = useState<Genre>(Genre.SciFi);
+	const [selectedFlick, setSelectedFlick] = useState<Flick>({} as Flick);
 
-	const value = { report, setReport, selectedGenre, setSelectedGenre };
+	const value = {
+		report,
+		setReport,
+		selectedGenre,
+		setSelectedGenre,
+		selectedFlick,
+		setSelectedFlick,
+	};
 
 	return (
 		<ReportContext.Provider value={value}>
