@@ -1,24 +1,39 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-import { useReport } from '../../services/ReportProvider';
 import { GenreDetails } from '../../interfaces/Genre';
-
-import Flick from '../../interfaces/Flick';
+import { useReport } from '../../services/ReportProvider';
+import { fetchFlick } from '../../services/ApiService';
 
 import './FlickDetail.css';
 
 const FlickDetail: React.FC<{}> = ({}) => {
-	// will need to fetch movie details based on id if I want additional?
-	// or should I just pass the object in as a param?
-	const { id } = useParams();
-	const { report, selectedGenre } = useReport();
+	// should probably rename useReport now that it's not just for reports
+	const { selectedGenre, selectedFlick, setSelectedFlick } = useReport();
 	const navigate = useNavigate();
+	const { id } = useParams();
 
-	// turn flickId into a number
-
-	const flick = report.find((flick) => flick.id === parseInt(id || '0')) as  // getting a little more explicit here, for extra type safety (overkill?)
-		| Flick
-		| undefined;
+	useEffect(() => {
+		const fetchData = async () => {
+			if (id === undefined) {
+				console.error('Flick ID is undefined');
+				return;
+			}
+			try {
+				const idNumber = parseInt(id, 10);
+				if (!isNaN(idNumber)) {
+					console.log('id: ', idNumber);
+					const result = await fetchFlick(idNumber);
+					setSelectedFlick(result);
+				} else {
+					console.error('Flick ID is not a number');
+				}
+			} catch (error) {
+				console.error('Failed to fetch genre:', error);
+			}
+		};
+		if (id) fetchData();
+	}, [id]);
 
 	return (
 		<div id='detail-container'>
@@ -33,8 +48,8 @@ const FlickDetail: React.FC<{}> = ({}) => {
 				<div id='detail-poster-div'>
 					<img
 						key={selectedGenre}
-						src={`https://image.tmdb.org/t/p/w200${flick?.imageUrl}`}
-						alt={flick?.title}
+						src={`https://image.tmdb.org/t/p/w200${selectedFlick?.imageUrl}`}
+						alt={selectedFlick?.title}
 						id='detail-poster'
 						onError={(e) => {
 							// Fallback to genreImage if flick image fails to load
@@ -44,10 +59,10 @@ const FlickDetail: React.FC<{}> = ({}) => {
 					/>
 				</div>
 				<div id='detail-text-div'>
-					<h2 id='detail-title'>{flick?.title}</h2>
-					<p>{flick?.overview}</p>
+					<h2 id='detail-title'>{selectedFlick?.title}</h2>
+					<p>{selectedFlick?.overview}</p>
 					<div id='detail-release-date'>
-						<p>release date: {flick?.releaseDate}</p>
+						<p>release date: {selectedFlick?.releaseDate}</p>
 					</div>
 				</div>
 			</div>
