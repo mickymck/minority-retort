@@ -4,6 +4,7 @@ interface Flick {
 	releaseDate: string;
 	popularity: number;
 	imageUrl: string;
+	overview: string;
 }
 
 export default Flick;

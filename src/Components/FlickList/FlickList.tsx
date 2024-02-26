@@ -11,19 +11,20 @@ const FlickList: React.FC = () => {
 	let pageNumber = 1;
 	return (
 		<div>
+			<h1 id='app-header'>Minority Retort.</h1>
 			<GenrePicker />
-			<div className='flicklist-container'>
+			<div id='list-container'>
 				{report.map((flick) => (
 					// need to find a better way to style this. remove text styling for sure...
 					<Link
 						key={flick.id}
 						to={`/film/${flick.id}`}
-						className='link-div'>
+						className='cell-div'>
 						<FlickCell flick={flick} />
 					</Link>
 				))}
 			</div>
-			<div className='page-number-div'>
+			<div id='page-number-div'>
 				<button>
 					<p>{`<`}</p>
 				</button>

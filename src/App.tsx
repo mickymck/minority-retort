@@ -12,7 +12,6 @@ const App: React.FC = () => {
 		// ReportProvider to pass global context to children via useReport
 		<ReportProvider>
 			<div className='App'>
-				<h1 className='app-header'>Minority Retort.</h1>
 				<Routes>
 					<Route
 						path='/'
