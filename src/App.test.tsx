@@ -8,13 +8,13 @@ jest.mock('axios', () => {
 
 // Still need to import axios and work with it before other imports, I think
 import axios from 'axios';
-import { fetchGenreMock } from './__mocks__/fetchGenreMock';
+import { fetchScifiMock } from './__mocks__/fetchGenreMock';
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 mockedAxios.create.mockReturnThis();
 mockedAxios.get.mockImplementation(() => {
 	console.log('axios.get mock called');
 	return Promise.resolve({
-		data: fetchGenreMock,
+		data: fetchScifiMock,
 	});
 });
 
