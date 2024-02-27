@@ -40,6 +40,7 @@ const FlickDetail: React.FC<{}> = ({}) => {
 			<div id='close-button-div'>
 				<button
 					id='close-button'
+					aria-label='Close Flick Detail'
 					onClick={() => navigate(-1)}>
 					X
 				</button>
@@ -49,7 +50,7 @@ const FlickDetail: React.FC<{}> = ({}) => {
 					<img
 						key={selectedGenre}
 						src={`https://image.tmdb.org/t/p/w200${selectedFlick?.imageUrl}`}
-						alt={selectedFlick?.title}
+						alt={`${selectedFlick.title} poster`}
 						id='detail-poster'
 						onError={(e) => {
 							// Fallback to genreImage if flick image fails to load

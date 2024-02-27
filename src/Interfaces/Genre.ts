@@ -76,6 +76,33 @@ export class GenreDetails {
 				return scifi;
 		}
 	}
+
+	static getName(genre: Genre): string {
+		switch (genre) {
+			case Genre.Action:
+				return 'Action';
+			case Genre.Comedy:
+				return 'Comedy';
+			case Genre.Documentary:
+				return 'Documentary';
+			case Genre.Drama:
+				return 'Drama';
+			case Genre.Family:
+				return 'Family';
+			case Genre.Fantasy:
+				return 'Fantasy';
+			case Genre.Horror:
+				return 'Horror';
+			case Genre.Romance:
+				return 'Romance';
+			case Genre.SciFi:
+				return 'SciFi';
+			case Genre.Western:
+				return 'Western';
+			default:
+				return 'SciFi';
+		}
+	}
 }
 
 export class GenreId {}

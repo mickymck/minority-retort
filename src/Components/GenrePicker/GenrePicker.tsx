@@ -30,6 +30,7 @@ const GenrePicker: React.FC = () => {
 			<select
 				id='genre-picker'
 				value={selectedGenre}
+				aria-label='Select a genre'
 				onChange={(e) => setSelectedGenre(parseInt(e.target.value))}>
 				{Object.entries(Genre)
 					// genres all have a visible numeric key for some reason, so filter those out
@@ -39,6 +40,9 @@ const GenrePicker: React.FC = () => {
 						const genreId = GenreDetails.getId(genreEnum);
 						return (
 							<option
+								aria-label={`${GenreDetails.getName(
+									genreEnum
+								)}`}
 								key={genreId}
 								value={genreEnum}>
 								{key}

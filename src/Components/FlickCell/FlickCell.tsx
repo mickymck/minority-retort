@@ -23,12 +23,15 @@ const FlickCell: React.FC<FlickCellProps> = ({ flick }) => {
 				<img
 					key={selectedGenre}
 					src={`https://image.tmdb.org/t/p/w200${flick.imageUrl}`}
-					alt={flick.title}
+					alt={`${flick.title} poster`}
 					id='cell-poster'
 					onError={(e) => {
 						// Fallback to genreImage if flick image fails to load
 						e.currentTarget.src =
 							GenreDetails.getImage(selectedGenre);
+						e.currentTarget.alt = `${GenreDetails.getName(
+							selectedGenre
+						)} genre default image`;
 					}}
 				/>
 			</div>
