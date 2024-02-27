@@ -8,13 +8,16 @@ jest.mock('axios', () => {
 
 // Still need to import axios and work with it before other imports, I think
 import axios from 'axios';
-import { fetchScifiMock } from './__mocks__/fetchGenreMock';
+import {
+	fetchFlickApiReponse,
+	selectedFlick,
+} from '../../__mocks__/fetchFlickMock';
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 mockedAxios.create.mockReturnThis();
 mockedAxios.get.mockImplementation(() => {
 	console.log('axios.get mock called');
 	return Promise.resolve({
-		data: fetchScifiMock,
+		data: fetchFlickApiReponse,
 	});
 });
 
@@ -24,15 +27,15 @@ import { act } from 'react-dom/test-utils';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
-import { reportMock } from './__mocks__/reportMock';
+import { ReportProvider } from '../../services/ReportProvider';
 
-import App from './App';
+import FlickDetail from './FlickDetail';
 
-// mock the useReport hook with the reportMock mock data
-jest.mock('./services/ReportProvider', () => ({
-	...jest.requireActual('./services/ReportProvider'),
+// mock the useReport hook with the selectedFlick mock data
+jest.mock('../../services/ReportProvider', () => ({
+	...jest.requireActual('../../services/ReportProvider'),
 	useReport: jest.fn(() => ({
-		report: reportMock,
+		selectedFlick: selectedFlick,
 	})),
 }));
 
@@ -41,16 +44,19 @@ describe('App component', () => {
 		jest.resetAllMocks();
 	});
 
-	test('FlickList renders at the root path', async () => {
+	test('FlickDetail renders the proper movie details', async () => {
+		console.log();
 		await act(async () => {
 			render(
-				<MemoryRouter initialEntries={['/']}>
-					<App />
+				<MemoryRouter initialEntries={['/film/693134']}>
+					<ReportProvider>
+						<FlickDetail />
+					</ReportProvider>
 				</MemoryRouter>
 			);
 		});
 		await waitFor(() => {
-			expect(screen.getByText(/Shin Spider-Man/i)).toBeInTheDocument();
+			expect(screen.getByText(/Dune: Part Two/i)).toBeInTheDocument();
 		});
 	});
 });
