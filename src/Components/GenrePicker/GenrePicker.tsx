@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useReport } from '../../services/ReportProvider';
-import { fetchGenre } from '../../services/ApiService';
+import { fetchGenre } from '../../services/apiService';
 import { Genre, GenreDetails } from '../../interfaces/Genre';
 
 import './GenrePicker.css';

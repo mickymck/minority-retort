@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import { GenreDetails } from '../../interfaces/Genre';
 import { useReport } from '../../services/ReportProvider';
-import { fetchFlick } from '../../services/ApiService';
+import { fetchFlick } from '../../services/apiService';
 
 import './FlickDetail.css';
 

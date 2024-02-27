@@ -27,7 +27,6 @@ function useDynamicTitleSize(
 			if ((titleHeight + releaseHeight) * 1.1 > containerHeight) {
 				// decrement the font then check again
 				currentFont -= 1;
-				console.log('current font: ', currentFont);
 				requestAnimationFrame(adjustFontSize);
 			} else {
 				setFontSize(currentFont);

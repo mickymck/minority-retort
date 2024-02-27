@@ -32,10 +32,7 @@ export const fetchGenre = async (genreId: number) => {
 		const response = await apiClient.get('/3/discover/movie', {
 			params: genreParams(genreId),
 		});
-		console.log(
-			'fetchGenre called.  count: ',
-			response.data.results.length
-		);
+		console.log('fetchGenre called. count: ', response.data.results.length);
 		return response.data.results.map((item: any) => ({
 			id: item.id,
 			title: item.title,
@@ -53,18 +50,18 @@ export const fetchGenre = async (genreId: number) => {
 
 export const fetchFlick = async (flickId: number) => {
 	try {
-		console.log('params: ', flickParams());
 		const response = await apiClient.get(`/3/movie/${flickId}`, {
 			params: flickParams(),
 		});
 		const flick = response.data;
-		console.log('fetchFlick called title: ', flick.title);
+		console.log('fetchFlick called: ', flick);
 		const selectedFlick: Flick = {
 			id: flick.id,
 			title: flick.title,
 			releaseDate: flick.release_date,
 			popularity: flick.popularity,
 			imageUrl: flick.poster_path,
+			overview: flick.overview,
 		};
 		return selectedFlick;
 	} catch (error) {
