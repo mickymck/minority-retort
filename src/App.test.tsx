@@ -12,7 +12,6 @@ import { fetchScifiMock } from './__mocks__/fetchGenreMock';
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 mockedAxios.create.mockReturnThis();
 mockedAxios.get.mockImplementation(() => {
-	console.log('axios.get mock called');
 	return Promise.resolve({
 		data: fetchScifiMock,
 	});

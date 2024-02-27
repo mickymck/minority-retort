@@ -15,7 +15,6 @@ import {
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 mockedAxios.create.mockReturnThis();
 mockedAxios.get.mockImplementation(() => {
-	console.log('axios.get mock called');
 	return Promise.resolve({
 		data: fetchFlickApiReponse,
 	});
@@ -45,7 +44,6 @@ describe('App component', () => {
 	});
 
 	test('FlickDetail renders the proper movie details', async () => {
-		console.log();
 		await act(async () => {
 			render(
 				<MemoryRouter initialEntries={['/film/693134']}>
