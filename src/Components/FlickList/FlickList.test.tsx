@@ -11,6 +11,10 @@ const FlickList = require('./FlickList').default;
 import { useReport } from '../../services/ReportProvider';
 
 describe('FlickList', () => {
+	afterEach(() => {
+		jest.resetAllMocks(); // Reset mocks after each test
+	});
+
 	test('uses useReport on mount', () => {
 		render(<FlickList />);
 		expect(useReport).toHaveBeenCalled();
